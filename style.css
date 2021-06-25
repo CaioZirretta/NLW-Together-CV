@@ -1,62 +1,24 @@
-/*  GLOBAL  */
+/*  GLOBAL  
+        Estilo em seletores globais */
 
 *{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
-
-img{
-    width:100%;
-    height:auto;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Inclui padding e border no width e height do elemento */
 }
 
 ul{
-    list-style: none;
+    list-style: none; /* Tira a estilização da lista para não aparecerem os dots */
 }
 
 a{
     text-decoration: none; /* Tirar o underline do a */
 }
 
-/* BASE */
-
-html{
-    scroll-behavior: smooth;
+img{
+    width:100%;
+    height:auto;
 }
-
-body{
-    font: 400 1rem "DM Sans", sans-serif;
-    background: var(--body-color);
-    color: var(--text-color);
-    -webkit-font-smoothing: antialiased;
-}
-
-.title{
-    font: 700 1.875rem "Poppins", sans-serif;
-    color: var(--title-color);
-    -webkit-font-smoothing: auto;
-}
-
-.divider-1{
-    height: 1px;
-    background: linear-gradient(
-        270deg,
-        hsla(var(--hue), 36%, 57%, 1),
-        hsla(var(--hue), 65%, 88%, 0.34)
-    );
-}
-
-.divider-2{
-    height: 1px;
-    background: linear-gradient(
-        270deg, 
-        hsla(var(--hue), 65%, 88%, 0.34), 
-        hsla(var(--hue), 36%, 57%, 1)
-    );
-}
-
-/* ? */
 
 :root{
     --header-height: 4.5rem;
@@ -70,20 +32,64 @@ body{
     --text-color: hsl(0 0% 46%);
     --text-color-light: hsl(0 0% 98%);
     --body-color: hsl(0 0% 98%);
+
+    /* fonts */
+    --title-font-size: 1.875;
+    --subtitle-font-size: 1rem;
+
+    --title-font: 'Poppins', sans-serif;
+    --body-font: 'DM Sans', sans-serif;
+}
+
+/* BASE */
+
+html{
+    scroll-behavior: smooth;  /* Faz o scroll ficar suave */
+}
+
+body{
+    font: 400 1rem var(--body-font); /* Grossura, tamanho, nome e substituta genérica */
+    background: var(--body-color);
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;  /* Decoração da fonte */
+}
+
+.title{
+    font: 700 1.875rem var(--title-font);
+    color: var(--title-color);
+    -webkit-font-smoothing: auto;
+}
+
+.divider-1{
+    height: 1px;
+    background: linear-gradient(
+        270deg,
+        hsla(var(--hue), 36%, 57%, 1),
+        hsla(var(--hue), 65%, 88%, 0.34)
+    ); /* Faz o gradiente de cor entre os valores iniciais e finais */ 
+}
+
+.divider-2{
+    height: 1px;
+    background: linear-gradient(
+        270deg, 
+        hsla(var(--hue), 65%, 88%, 0.34), 
+        hsla(var(--hue), 36%, 57%, 1)
+    );
 }
 
 .button{
     background-color: var(--base-color);
     color: var(--text-color-light);
     height: 3.5rem;
-    display: inline-flex;
-    align-items: center;
-    padding: 0 2rem;
+    display: inline-flex; /* Display em linha de conteúdo flexível*/
+    align-items: center; /* Alinha os itens no centro da box */
+    padding: 0 2rem; /* top bottom */
     border-radius: 0.25rem;
     transition: background 0.3s;
 }
 
-.button:hover{
+.button:hover{ /* Altera a cor com o transition, quando o mouse tá em cima */
     background: var(--base-color-alt)
 }
 
@@ -97,7 +103,7 @@ body{
 }
 
 .grid{
-    display: grid;
+    display: grid; /* Display em linhas e colunas */
     gap: 2rem;
 }
 
@@ -107,6 +113,10 @@ body{
 
 .section .title{
     margin-bottom: 1rem;
+}
+
+.section .subtitle{
+    font-size: var(--subtitle-font-size);
 }
 
 .section header{
@@ -125,7 +135,7 @@ body{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 100;  /* Fica na frente de tudo, 100 é um exagero */
     background-color: var(--body-color);
     width: 100%;
 } 
@@ -141,7 +151,7 @@ main{
 /* LOGO */
 
 .logo{
-    font: 700 1.31rem "Poppins", sans-serif;
+    font: 700 1.31rem var(--title-font);
     color: var(--title-color);
 }
 
@@ -159,7 +169,7 @@ nav{
     height: var(--header-height);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Espaçamento dividido igualmente entre os elementos */
     width: 100%;
 }
 
@@ -178,8 +188,9 @@ nav ul li a{
 
 /* Animação de clique */
 
-nav ul li a:hover{
-    color: var(--base-color)
+nav ul li a:hover,
+nav ul li a.active{
+    color: var(--base-color);
 }
 
 nav ul li a::after{
@@ -194,7 +205,8 @@ nav ul li a::after{
     transition: width 0.2s;
 }
 
-nav ul li a:hover::after{
+nav ul li a:hover::after, 
+nav ul li a.active::after{
     width: 100%;
 }
 
@@ -205,9 +217,6 @@ nav .menu{
     transition: .2s;
 }
 
-nav .menu ul{
-}
-
 /* Quando mostrar o menu */
 
 nav.show .menu{ 
@@ -215,8 +224,8 @@ nav.show .menu{
     visibility: visible;
     background: var(--body-color);
     height: 100vh;
-    width: 100vh;
-    position: fixed;
+    width: 100%; /* O vh estava bugado, assim fixa no tamanho da tela */
+    position: fixed; /* Fixa a partir de um valor */
     top:0;
     left:0;
     display: grid;
@@ -252,7 +261,6 @@ nav.show div.icon-close{
     opacity: 1;
     top: 1.5rem;
     visibility: visible;
-
 }
 
 /* HOME */
@@ -284,6 +292,8 @@ nav.show div.icon-close{
     position: relative;
     right: 2.93rem;
 }
+
+
 #home .image img, #home .image::before{
     border-radius: 0.25rem;
 }
@@ -307,7 +317,7 @@ nav.show div.icon-close{
 /* ABOUT */
 
 #about{
-    overflow: hidden;
+    overflow: hidden; /* O que acontece quando o elemento é grande demais pra tela */
     background: white;
 }
 
@@ -327,13 +337,14 @@ nav.show div.icon-close{
     position: absolute;
     top: -8.3%;
     left: -33.3%;
-    z-index: -1;
+    z-index: 0;
+    border-radius: .5%;
 }
 
 #about .image img{
-    position: relative;
+    position: relative; /* Posição relativa ao elemento pai */
 }
-#about .image img, #home .image::before{
+#about .image img, #about .image::before{
     border-radius: 0.25rem;
 }
 
@@ -387,7 +398,7 @@ nav.show div.icon-close{
 
 #testimonials blockquote{
     padding: 2rem;
-    box-shadow: 0px 0px 0.75rem rgba(0,0,0, 0.08);
+    box-shadow: 0px 0px 0.75rem rgba(0,0,0, 0.08); /* Sombra, decoração */
     border-radius: 0.25rem;
 }
 
@@ -467,6 +478,10 @@ footer{
     background: var(--base-color);
 }
 
+footer .section{
+    padding: 4rem 0;
+}
+
 footer .logo{
     display: inline-block; /* Display padrão do a é inline, não dá pra ter margin */
     margin-bottom: 1.5rem;
@@ -520,15 +535,152 @@ footer .social{
 .back-to-top.show{
     visibility: visible;
     opacity: 1;
-    transform: translateY(0%    );
+    transform: translateY(0%);
 }
 
-/* MEDIA QUERIES */
+/*          MEDIA QUERIES           */
 /*    extra large devices: 1200 >    */
+
+@media(min-width: 1200px){
+    .container{
+        max-width: 1120px; /* Referente à caixa contendo a logo e os itens de nav */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .section{
+        padding: calc(5rem + var(--header-height)) 0;
+    }
+
+    .section header, #testimonials header{
+        max-width: 32rem;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .button{
+        height: 3.125rem;
+    }
+    /*
+        Corrigir :before a primeira seção com left: 1.275rem;
+        Corrigir antes o posicionamento da foto para não cortar e alinhar melhor
+    */
+    /* nav menu */
+
+    nav .menu{ /* Transformando o menu na versão "desktop", sem a tela aparecendo de cima */
+        opacity: 1;
+        visibility: visible;
+        top: 0;
+    }
+
+    nav .menu ul{
+        display: flex; /* Mostra os itens direto na caixa */
+        gap: 2rem;
+    }
+
+    nav .menu ul li a.title{
+        font: 400 1rem var(--title-font);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    nav .menu ul li a.title.active{
+        font-weight: bold;
+        -webkit-font-smoothing: auto;
+    }
+
+    nav .icon-menu{
+        display:none /* Corrige a posição dos itens para a direita */
+    }
+
+    main{
+        margin-top: var(--header-height)
+    }
+
+    /* home */
+
+    #home .container{
+        grid-auto-flow: column; /* Novamente ajustando os elementos por coluna */
+        justify-content: space-between;
+        margin: 0 auto;
+    }
+
+    #home .image{
+        order: 1;
+    }
+
+    #home .text{
+        order: 0;
+        text-align: left;
+        max-width: 24rem;
+    }
+
+    #home .image::before{
+        left: 1.275rem;
+    }
+
+    /* about */
+
+    #about .container{
+        grid-auto-flow: column;
+        margin: 0 auto;
+        /*          ACERTAR POSIÇÃO DA FOTO            */
+    }
+
+    /* services */
+
+    .cards{
+        grid-template-columns: 1fr 1fr 1fr; /* Fraciona o espaço proporcionalmente */
+    }
+
+    .card{
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    /* testimonials */
+
+    #testimonials .container{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* contact */
+
+    #contact .container{
+        grid-auto-flow: column;
+        align-items: center;
+    }
+
+    #contact .text{
+        max-width: 25.25rem;
+    }
+
+    /* footer */
+
+    footer.section{
+        padding: 3.75rem 0;
+    }
+
+    footer .container{
+        grid-auto-flow: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    footer .logo{
+        font-size: 2rem;
+    }
+}
+
 /*    large devices 1023 >           */
 /*    large devices 992 >            */
-@media(min-width: 992px){
 
+@media(min-width: 992px){
+    :root{
+        --title-font-size: 2.25rem;
+        --subtitle-font-size: 1.125rem;
+    }
 }
 
 /*    mewdium devices: 767           */
