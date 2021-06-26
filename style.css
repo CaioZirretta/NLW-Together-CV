@@ -23,7 +23,7 @@ img{
 :root{
     --header-height: 4.5rem;
     /* colors */
-    --hue: 345;
+    --hue: 203;
     /* HSL color mode */
     --base-color: hsl(var(--hue) 66% 57%);
     --base-color-second: hsl(var(--hue) 65% 88%);
@@ -32,7 +32,7 @@ img{
     --text-color: hsl(0 0% 46%);
     --text-color-light: hsl(0 0% 98%);
     --body-color: hsl(0 0% 98%);
-
+    
     /* fonts */
     --title-font-size: 1.875;
     --subtitle-font-size: 1rem;
@@ -281,7 +281,7 @@ nav.show div.icon-close{
     content: '';
     width: 100%;
     height: 100%;
-    background: var(--base-color-second);
+    background: var(--base-color);
     position: absolute;
     top: -16.8%;
     left: 16.7%;
@@ -331,21 +331,19 @@ nav.show div.icon-close{
 
 #about .image::before{
     content: '';
-    width: 100%;
-    height: 100%;
-    background: var(--base-color-second);
+    width: 87%;
+    height: 89%;
+    background: var(--base-color);
     position: absolute;
-    top: -8.3%;
-    left: -33.3%;
+    top: 5.7%;
+    left: 3.7%;
     z-index: 0;
-    border-radius: .5%;
+    border-radius: 0.25rem;
 }
 
 #about .image img{
-    position: relative; /* Posição relativa ao elemento pai */
-}
-#about .image img, #about .image::before{
-    border-radius: 0.25rem;
+    position: relative;
+    padding: 2rem 2rem 0 2rem;
 }
 
 #about .text{
@@ -562,10 +560,7 @@ footer .social{
     .button{
         height: 3.125rem;
     }
-    /*
-        Corrigir :before a primeira seção com left: 1.275rem;
-        Corrigir antes o posicionamento da foto para não cortar e alinhar melhor
-    */
+
     /* nav menu */
 
     nav .menu{ /* Transformando o menu na versão "desktop", sem a tela aparecendo de cima */
@@ -625,6 +620,24 @@ footer .social{
         grid-auto-flow: column;
         margin: 0 auto;
         /*          ACERTAR POSIÇÃO DA FOTO            */
+    }
+
+    #about .image::before{
+        content: '';
+        width: 88%;
+        height: 83%;
+        background: var(--base-color);
+        position: absolute;
+        top: 5%;
+        left: 3%;
+        z-index: 0;
+        border-radius: 0.25rem;
+    }
+    
+    #about .image img{
+        position: relative; /* Posição relativa ao elemento pai */
+        padding: 4rem;
+        border-radius: 4.3rem;
     }
 
     /* services */
